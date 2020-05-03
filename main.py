@@ -1,7 +1,11 @@
-from tkinter import Tk, Frame, Label, Button
+###Imports###
+from tkinter import Tk, Frame
+from tkinter.ttk import Label, Button
 
+###FONTS
 LARGE_FONT = ('Verdana', 12)
 
+#longer text
 WELCOME_TEXT = """long text
 dijwid
 ajsidjasi
@@ -10,18 +14,21 @@ asdkhahsk"""
 
 
 class MyApp(Tk):
+    """
+    main root of a program
+    """
 
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
         Tk.wm_title(self, 'My title')
 
-        container = Frame(self)
+        container = Frame(self) # funny thing which does sth
         container.pack(side='top', fill='both', expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-        self.frames = {}
+        self.frames = {} # dictionary with all frames
 
         for F in (HomePage, PageOne):  # pętla do wrzucania klatek do self.frames
             frame = F(container, self)
@@ -31,26 +38,32 @@ class MyApp(Tk):
 
         self.show_frame(HomePage)
 
-    def show_frame(self, cont):
+    def show_frame(self, cont): # function to change frames
         frame = self.frames[cont]
         frame.tkraise()
 
 class HomePage(Frame):
+    """
+    First Page
+    """
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
 
         label = Label(self, text='HomePage', font=LARGE_FONT)
-        label.pack(pady=10, padx=10)
+        label.pack(pady=10, padx=10) # margins
 
-        button1 = Button(self, text="Visit Page1",
+        button1 = Button(self, text="Visit Page1", # button to go to another page
                         command=lambda: controller.show_frame(PageOne))
         button1.pack()
 
-        welcome_text = Label(self, text=WELCOME_TEXT)
+        welcome_text = Label(self, text=WELCOME_TEXT) # some text
         welcome_text.pack()
 
 class PageOne(Frame):
+    """
+    Another Page
+    """
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
@@ -63,4 +76,5 @@ class PageOne(Frame):
         button1.pack()
 
 app = MyApp()
+app.geometry('500x400') # changes size of the window to width:500px , height:400px
 app.mainloop()
