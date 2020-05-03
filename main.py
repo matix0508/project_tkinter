@@ -2,17 +2,18 @@
 from tkinter import Tk, Frame
 from tkinter.ttk import Label, Button
 
-###FONTS
+###FONTS###
 LARGE_FONT = ('Verdana', 12)
 
-#longer text
-WELCOME_TEXT = """long text
-dijwid
-ajsidjasi
-aidhaid
-asdkhahsk"""
+###LONGER TEXTS###
+EXAMPLE_TEXT = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Ut sodales velit sed tempus accumsan.
+Sed sodales nisl a fringilla tempus.
+Quisque lacinia sit amet turpis."""
 
 
+###PROGRAM###
 class MyApp(Tk):
     """
     main root of a program
@@ -42,6 +43,8 @@ class MyApp(Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
+
+###FRAMES###
 class HomePage(Frame):
     """
     First Page
@@ -57,8 +60,10 @@ class HomePage(Frame):
                         command=lambda: controller.show_frame(PageOne))
         button1.pack()
 
-        welcome_text = Label(self, text=WELCOME_TEXT) # some text
+        welcome_text = Label(self, text=EXAMPLE_TEXT) # some text
         welcome_text.pack()
+
+
 
 class PageOne(Frame):
     """
@@ -75,6 +80,7 @@ class PageOne(Frame):
                         command=lambda: controller.show_frame(HomePage))
         button1.pack()
 
+###SETTING UP###
 app = MyApp()
-app.geometry('500x400') # changes size of the window to width:500px , height:400px
+app.geometry('600x400') # changes size of the window to width:500px , height:400px
 app.mainloop()
