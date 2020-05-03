@@ -31,7 +31,7 @@ class MyApp(Tk):
 
         self.frames = {} # dictionary with all frames
 
-        for F in (HomePage, PageOne):  # pętla do wrzucania klatek do self.frames
+        for F in (HomePage, PageOne):  # a for loop to add all frames to self.frames
             frame = F(container, self)
             self.frames[F] = frame
 
@@ -82,5 +82,5 @@ class PageOne(Frame):
 
 ###SETTING UP###
 app = MyApp()
-app.geometry('600x400') # changes size of the window to width:500px , height:400px
+app.geometry('600x400') # changes size of the window to width:600px , height:400px
 app.mainloop()
